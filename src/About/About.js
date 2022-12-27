@@ -1,0 +1,15 @@
+import { Navbar } from "react-bootstrap";
+
+const About = () =>{
+    return (
+       <>
+       <h1 style={{textAlign:"center", margin:"15px"}}>About</h1>
+       <img style={{float:"left", borderRadius:"50%"}} src="https://us.123rf.com/450wm/vladnikon/vladnikon2210/vladnikon221000264/vladnikon221000264.jpg?ver=6" alt= "pic"/>
+       <p>hii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completedhii! welcome in this wepsite this is first project to be completed</p>
+      <Navbar bg="dark" expand="lg" variant='dark' className="p-5" > <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand></Navbar>
+
+       </>
+    )
+   }
+   
+   export default About;

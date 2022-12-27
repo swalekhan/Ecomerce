@@ -10,10 +10,10 @@ const intial = {
 const reducer = (state,action) =>{
     if(action.type==="add"){
         let updatedItem = state.items.concat(action.item)
-        let updatedTotalItem = state.totalItems + action.item.quantity
+        let updatedTotalAmount = state.totalItems + action.item.quantity * action.item.price
         return {
             items:updatedItem,
-            totalItems:updatedTotalItem
+            totalAmount:updatedTotalAmount
         }
     }
 }
@@ -23,8 +23,8 @@ const ContextProvider = (props) => {
     const [state, dispatch] = useReducer(reducer, intial)
 
      const addItemHandler = (item) =>{
+        console.log(state.totalAmount)
        dispatch({type:"add", item:item})
-       console.log("add",state.totalItems)
      }
 
      const removeItemHandler = (id) => {
@@ -33,7 +33,7 @@ const ContextProvider = (props) => {
 
     const values = {
      items: state.items,
-     totalItems: state.totalItems,
+     totalAmount: state.totalAmount,
      addItem:addItemHandler,
      removeItem:removeItemHandler
     }

@@ -6,7 +6,9 @@ import MainCard from './component/Card/MainCard';
 import { useState } from 'react';
 import MainNavbar from './component/Header/MainNavbar';
 import ContextProvider from './Store/ContextProvider';
-
+import { Route } from 'react-router-dom'
+import Home from './Home/Home';
+import About from './About/About';
 function App() {
    const [state, setState] = useState(false)
    const showHandler = () => {
@@ -22,9 +24,17 @@ function App() {
    return (
       <ContextProvider>
          <MainNavbar onShow={showHandler} />
-         {state && <MainCard show={state} onHide={closeHandle} />}
          <Header />
-         <Product />
+         <Route path='/Home'>
+            <Home />
+         </Route>
+         <Route path="/Product">
+            {state && <MainCard show={state} onHide={closeHandle} />}  
+            <Product />
+         </Route>
+         <Route path='/About'>
+           <About/>
+         </Route>
       </ContextProvider>
    );
 }

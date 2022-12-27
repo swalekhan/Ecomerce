@@ -18,7 +18,7 @@ const MainCard = (props) => {
             <div>quantity</div>
          </Stack>
           <ul>{ abc.items.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={e.imageUrl}/>))}</ul>
-          <h3>Total ${abc.totalItems}</h3>
+          <h3>Total ${abc.totalAmount}</h3>
          </Modal.Body>
          <Modal.Footer>
          <Button variant="secondary" >Purchase</Button>
