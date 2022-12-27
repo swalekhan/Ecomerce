@@ -28,25 +28,24 @@ const Product = () => {
 
     return (
         <>
-        <Row xs={2} md={2} className="g-4" >
-            {productsArr.map((e) =>
-            (
-                    <Col>
-                        <Card >
-                            <Card.Header className="p-3">
-                                <Card.Title>{e.title}</Card.Title>
-                            </Card.Header>
-                            <Card.Body>
+            <h1 style={{ textAlign: "center", margin: "10px" }}>MUSIC</h1>
+            <Row md={12} lg={12}>
+                {productsArr.map((e) =>
+                (
+                    <Col md={{ span: 3, offset: 2 }} className="mt-5">
+                        <Card>
+                            <div>
+                                <Card.Title text="center">{e.title}</Card.Title>
+                            </div>
+                            <div>
                                 <Card.Img src={e.imageUrl} alt="pic" />
-                                <Card.Text>{e.price}</Card.Text>
+                                <Card.Text>${e.price}</Card.Text>
                                 <Button>Add to Crad</Button>
-                            </Card.Body>
-                        
+                            </div>
                         </Card>
                     </Col>
-                
-           ))}
-           </Row>
+                ))}
+            </Row>
         </>
     )
 }

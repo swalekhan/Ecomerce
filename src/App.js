@@ -1,25 +1,31 @@
 
 import './App.css';
-// import HNavbar from './component/Navbar/Navbar';
-import { Container, Navbar, Nav } from 'react-bootstrap';
 import Product from './component/product/Product';
 import Header from './component/Header/Header';
+import MainCard from './component/Card/MainCard';
+import { useState } from 'react';
+import MainNavbar from './component/Header/MainNavbar';
+import ContextProvider from './Store/ContextProvider';
 
 function App() {
+   const [state, setState] = useState(false)
+   const showHandler = () => {
+      console.log("close")
+
+      setState(true);
+   }
+   const closeHandle = () => {
+      console.log("close")
+      setState(false)
+   }
+
    return (
-      <div>
-         <Navbar  bg="dark" expand="lg" variant='dark'>
-            <Container>
-               <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
-               <Nav className="me-auto">
-               <Nav.Link href="/">Home</Nav.Link>
-               <Nav.Link href="/">Link</Nav.Link>
-               </Nav>
-            </Container>
-         </Navbar>
-         <Header/>
+      <ContextProvider>
+         <MainNavbar onShow={showHandler} />
+         {state && <MainCard show={state} onHide={closeHandle} />}
+         <Header />
          <Product />
-      </div>
+      </ContextProvider>
    );
 }
 
