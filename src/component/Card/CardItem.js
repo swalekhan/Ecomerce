@@ -12,8 +12,7 @@ import { Stack } from "react-bootstrap";
          <Stack  direction="horizontal" className="m-3px" gap={3}>
             <div><img width="80px" src={props.item} alt="pic"/></div>
             <div>{props.price}</div>
-            <div>{props.quantity}</div>
-            
+            <div>{props.quantity}</div>  
          </Stack>
          <hr/>
          </li>

@@ -1,28 +1,10 @@
+import { useContext } from "react";
 import {Button,  Modal,Stack } from "react-bootstrap";
+import Context from "../../Store/Context";
 import CardItem from './CardItem'
-const cartElements = [
-    {
-        title: 'Colors',
-        price: 100,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        quantity: 2,
-    },
-    {
-        title: 'Black and white Colors',
-        price: 50,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        quantity: 3,
-    },
-    {
-        title: 'Yellow and Black Colors',
-        price: 70,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        quantity: 1,
-    }
-]
 
 const MainCard = (props) => {
-    
+    const abc = useContext(Context)
     return (
         <>
          <Modal show={props.show} onHide={props.onHide}>
@@ -35,8 +17,8 @@ const MainCard = (props) => {
             <div>price</div>
             <div>quantity</div>
          </Stack>
-          <ul>{ cartElements.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={e.imageUrl}/>))}</ul>
-          <h3>Total ${73}</h3>
+          <ul>{ abc.items.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={e.imageUrl}/>))}</ul>
+          <h3>Total ${abc.totalItems}</h3>
          </Modal.Body>
          <Modal.Footer>
          <Button variant="secondary" >Purchase</Button>
