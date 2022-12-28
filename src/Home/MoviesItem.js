@@ -1,6 +1,7 @@
-import { Stack } from "react-bootstrap";
+import { Button, Stack } from "react-bootstrap";
 
 const MoviesItem = (props) => {
+    
     return (
         <>
         <li style={{margin:"10px", listStyle:"none"}} >
@@ -9,6 +10,7 @@ const MoviesItem = (props) => {
             <div>{props.title}</div>
             <div>{props.openingText}</div>  
             <div>{props.releaseData}</div>  
+            <Button variant="danger"  onClick={()=>props.deleteHandler(props.id)}>Delete</Button>
          </Stack>
          <hr/>
          </li>
