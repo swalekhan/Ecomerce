@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Navbar, Table } from "react-bootstrap";
 import MoviesItem from "./MoviesItem";
 import Spiner from "./Spiner";
@@ -7,7 +7,7 @@ const Home = () => {
   const [spiner, setSpiner] = useState(false)
   const [state, setState] = useState([]);
 
-  const fetchHandler = async () => {
+  const fetchHandler = useCallback(async () => {
     setSpiner(true)
     try {
       let response = await fetch("https://swapi.dev/api/films/")
@@ -30,8 +30,12 @@ const Home = () => {
       setError(error.message)
     }
     setSpiner(false)
-  }
-
+  },[])
+ 
+  useEffect(()=>{
+    fetchHandler()
+  },[fetchHandler])
+   
   return (
     <>
       <h1 style={{ textAlign: "center", margin: "15px" }}>TOUR</h1>
