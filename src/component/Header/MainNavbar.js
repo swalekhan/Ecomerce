@@ -14,6 +14,7 @@ const MainNavbar = (props) => {
                     <li style={{margin:"0px 10px"}}>  <NavLink to="/Product">Store</NavLink></li>
                     <li style={{margin:"0px 10px"}}>  <NavLink to="/About">About</NavLink></li>
                     <li style={{margin:"0px 10px"}}>  <NavLink to="/Contact">Contact us</NavLink></li>
+                    <li style={{margin:"0px 10px"}}>  <NavLink to="/Login">login</NavLink></li>
                     </ul>
                 </Nav>
                 <Button variant='success' className='ms-auto' onClick={props.onShow}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length}</span></Button>

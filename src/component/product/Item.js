@@ -2,6 +2,8 @@ import React from "react";
 import {  Col, Card, Button } from "react-bootstrap";
 import { useContext } from "react";
 import Context from "../../Store/Context";
+import { Link } from "react-router-dom";
+
 const Item = (props) => {
     const abc = useContext(Context)
 
@@ -20,7 +22,7 @@ const Item = (props) => {
                     <Card.Title text="center">{props.title}</Card.Title>
                 </div>
                 <div>
-                    <Card.Img src={props.imageUrl} alt="pic" />
+                <Link to={ "/SingleProduct/" +props.title}> <Card.Img src={props.imageUrl} alt="pic" /></Link> {/* Link for dynamic router */}
                     <Card.Text>${props.price}</Card.Text>
                     <Button onClick={clickHandler}>Add to Crad</Button>
                 </div>

@@ -6,10 +6,12 @@ import MainCard from './component/Card/MainCard';
 import { useState } from 'react';
 import MainNavbar from './component/Header/MainNavbar';
 import ContextProvider from './Store/ContextProvider';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 // import Home from './Home/Home';
 import About from './About/About';
 import Contact from './component/contact/Contact';
+import SingleProduct from './component/product/DynamicPage/SingleProduct';
+import Login from './component/Login/Login';
 function App() {
    const [state, setState] = useState(false)
    const showHandler = () => {
@@ -29,16 +31,26 @@ function App() {
          {/* <Route path='/Home'>
             <Home />
          </Route> */}
+         <Switch>
          <Route path="/Product">
-            {state && <MainCard show={state} onHide={closeHandle} />}  
+            {state && <MainCard show={state} onHide={closeHandle} />}
             <Product />
          </Route>
          <Route path='/About'>
-           <About/>
+            <About />
          </Route>
          <Route path='/Contact'>
-           <Contact/>
+            <Contact />
          </Route>
+         
+         <Route path='/Login'>
+            <Login/>
+         </Route>
+
+         <Route path='/SingleProduct/:id'>
+            <SingleProduct />
+         </Route>
+         </Switch>
       </ContextProvider>
    );
 }
