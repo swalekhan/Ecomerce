@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Form, Card, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import Context from "../Store/Context";
 
 const Login = () => {
+    const abc = useContext(Context)
     const history = useHistory()
     const emailRef = useRef()
     const passRef = useRef()
@@ -34,14 +36,21 @@ const Login = () => {
          }
       }).then((data)=>{
         console.log(data)
+        abc.addToken(data.idToken)
       history.replace('/Product')
       })
 
     }
 
+    const style ={
+      border:"2px solid  rgb(248, 106, 106)",
+      backgroundColor:"rgb(248, 106, 106)",
+      color:"white",
+      textAlign: "center"
+   }
   return ( 
-    <Card border="primary" style={{ width: '25rem', margin: "4% 36%" }} className="p-2">
-            <Card.Header  >Login</Card.Header>
+    <Card  style={{ width: '25rem', margin: "4% 36%",border:"2px solid  rgb(248, 106, 106)" }} className="p-2">
+            <Card.Header style={style} >Login</Card.Header>
             <Form onSubmit={submitHandler}>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
@@ -53,8 +62,8 @@ const Login = () => {
                     <Form.Control ref={passRef}  type="text" />
                 </Form.Group>
         
-                <Button variant="primary" className="m-3" type="submit">
-                    Submit
+                <Button style={style} className="m-3" type="submit">
+                    Login
                 </Button>
             </Form>
         </Card>

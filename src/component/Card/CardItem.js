@@ -16,7 +16,6 @@ import { Stack } from "react-bootstrap";
          </Stack>
          <hr/>
          </li>
-
         </>
        )
     }

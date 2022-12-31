@@ -5,11 +5,20 @@ import CardItem from './CardItem'
 
 const MainCard = (props) => {
     const abc = useContext(Context)
+  const clickHandler = () =>{
+    alert("thanks for purchesing")
+  }
+    const style ={
+        border:"2px solid  rgb(248, 106, 106)",
+        backgroundColor:"rgb(248, 106, 106)",
+        color:"white",
+        textAlign: "center"
+     }
     return (
         <>
          <Modal show={props.show} onHide={props.onHide}>
-         <Modal.Header closeButton>
-          <Modal.Title className="text-center">Card</Modal.Title>
+         <Modal.Header style={style} closeButton>
+          <Modal.Title  >Card</Modal.Title>
          </Modal.Header>
          <Modal.Body>
          <Stack  direction="horizontal" className="ms-5 " gap={3}>
@@ -21,7 +30,7 @@ const MainCard = (props) => {
           <h3>Total ${abc.totalAmount}</h3>
          </Modal.Body>
          <Modal.Footer>
-         <Button variant="secondary" >Purchase</Button>
+         <Button style={style} onClick={clickHandler} >Purchase</Button>
          </Modal.Footer>
          </Modal>
         </>

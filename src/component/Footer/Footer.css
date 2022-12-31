@@ -1,0 +1,16 @@
+.container-footer{
+    margin-top: 20px;
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(39, 38, 38);
+    color: white;
+    position:relative;
+    overflow: auto;
+}
+
+.container-footer h1{
+    font-weight:900;
+    /* font-family: 'Abril Fatface', cursive; */
+    /* font-size:xx-large; */
+}
+

@@ -1,41 +1,55 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import Context from "./Context";
 
 
 const intial = {
     items: [],
-    totalItems: 0,
+    totalAmount: 0
 }
 
-const reducer = (state,action) =>{
-    if(action.type==="add"){
+const reducer = (state, action) => {
+    if (action.type === "add") {
         let updatedItem = state.items.concat(action.item)
-        let updatedTotalAmount = state.totalItems + action.item.quantity * action.item.price
+        let updatedTotalAmount =  state.totalAmount + action.item.quantity * action.item.price
         return {
-            items:updatedItem,
+            items: updatedItem,
             totalAmount:updatedTotalAmount
         }
     }
 }
 
 const ContextProvider = (props) => {
+    const localStorageToken = localStorage.getItem("token")
+    const [token, setToken] = useState(localStorageToken)
+    const [cardState, dispatch] = useReducer(reducer, intial)
 
-    const [state, dispatch] = useReducer(reducer, intial)
 
-     const addItemHandler = (item) =>{
-        console.log(state.totalAmount)
-       dispatch({type:"add", item:item})
-     }
+    const addItemHandler = (item) => {
+        console.log(cardState.totalAmount)
+        dispatch({ type: "add", item: item })
+    }
 
-     const removeItemHandler = (id) => {
-        dispatch({type:"remove", id:id})
-     }
+    const removeItemHandler = (id) => {
+        dispatch({ type: "remove", id: id })
+    }
+
+    const addTokenHandler = (newToken) => {
+        setToken(newToken)
+        localStorage.setItem("token", newToken)
+    }
+    const removeTokenhandler = () => {
+        localStorage.removeItem("token")
+    }
 
     const values = {
-     items: state.items,
-     totalAmount: state.totalAmount,
-     addItem:addItemHandler,
-     removeItem:removeItemHandler
+        token: token,
+        addToken: addTokenHandler,
+        removeToken: removeTokenhandler,
+        //  .........
+        items: cardState.items,
+        totalAmount: cardState.totalAmount,
+        addItem: addItemHandler,
+        removeItem: removeItemHandler
     }
     return (
         <Context.Provider value={values}>

@@ -1,0 +1,10 @@
+
+.alert-main{
+    position: fixed;
+    top:8%;
+    right: 0%;;
+    color: red;
+    z-index: 10;
+    background-color: aqua;
+    padding: 10px;
+}

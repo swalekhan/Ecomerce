@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
 const Contact = () => {
-     const [alert, setAlert] = useState(false)
+    //  const [alert, setAlert] = useState(false)
 
     const name = useRef()
     const email = useRef()
@@ -10,30 +10,42 @@ const Contact = () => {
 
      const submitHandler = async(e) =>{
         e.preventDefault();
-        setAlert(true)
+        // setAlert(true)
         let info = {
             name:name.current.value,
             email:email.current.value,
             phone:phone.current.value
         }
-       const response = await fetch("https://crudcrud.com/api/d218d5d96c7643f0853f94555e9b99a4/info",{
+        console.log("in of function before fe")
+        try{
+       const response = await fetch("https://crudcrud.com/api/fa4a61c142754728abefb68917eeddf2/info",{
         method:"POST",
         body:JSON.stringify(info),
         headers:{
         'Content-Type': 'application/json'
-        }
-       })
-
+        } })
+         
        const data = await response.json()
          console.log(data)
-         setAlert(false)
+         alert("thanks! we will contact you soon.")
+        //  setAlert(false)
+       }catch(err){
+           alert(err.message)
+        }
      }
+      
 
+     const style ={
+        border:"2px solid  rgb(248, 106, 106)",
+        backgroundColor:"rgb(248, 106, 106)",
+        color:"white",
+        textAlign: "center"
+     }
     return (
         <>
-        {alert && <p>submited form</p>}
-        <Card border="primary" style={{ width: '25rem', margin: "4% 36%" }} className="p-2">
-            <Card.Header variant="warning" >Contact us</Card.Header>
+        {/* {alert && <p>submited form</p>} */}
+        <Card  style={{ width: '25rem', margin: "4% 36%",border:"2px solid  rgb(248, 106, 106)" }} className="p-2">
+            <Card.Header style={style} >Contact us</Card.Header>
             <Form onSubmit={submitHandler}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -50,7 +62,7 @@ const Contact = () => {
                     <Form.Control ref={phone}  type="text" />
                 </Form.Group>
         
-                <Button variant="primary" className="m-3" type="submit">
+                <Button style={style} className="m-3" type="submit">
                     Submit
                 </Button>
             </Form>
