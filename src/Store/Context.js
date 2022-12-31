@@ -2,7 +2,7 @@
 import React from "react";
 
 const Context = React.createContext({
-        token:"",
+        token:null,
          addToken:()=>{},
          removeToken:()=>{},
          alert:false,

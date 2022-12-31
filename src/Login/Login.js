@@ -36,7 +36,7 @@ const Login = () => {
          }
       }).then((data)=>{
         console.log(data)
-        abc.addToken(data.idToken)
+        abc.addToken(updatedemail)
       history.replace('/Product')
       })
 

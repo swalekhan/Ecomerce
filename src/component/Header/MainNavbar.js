@@ -4,6 +4,23 @@ import Context from '../../Store/Context';
 import { NavLink } from 'react-router-dom';
 const MainNavbar = (props) => {
     const abc = useContext(Context)
+   
+     
+    const getDataBackend = async()=>{
+        props.onShow()
+        let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
+        // console.log("email",removeDotEmail)
+        try{
+       const response = await fetch(`https://crudcrud.com/api/6382280ea42b4608a05dd0249faf5f8e/${removeDotEmail}`)
+            
+       const data = await response.json()
+         console.log(data)
+         abc.addItem(data)
+        }catch (err){
+          console.log(err)
+        }
+    } 
+
 
     const style = {
         margin: "0px 10px",
@@ -23,7 +40,7 @@ const MainNavbar = (props) => {
                         <li><NavLink style={style} to="/Login">Login</NavLink></li>
                     </ul>
                 </Nav>
-                <Button variant='success' className='ms-auto' onClick={props.onShow}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length}</span></Button>
+                <Button variant='success' className='ms-auto' onClick={getDataBackend}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length}</span></Button>
             </Container>
         </Navbar>
     )

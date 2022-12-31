@@ -22,7 +22,7 @@ const ContextProvider = (props) => {
     const localStorageToken = localStorage.getItem("token")
     const [token, setToken] = useState(localStorageToken)
     const [cardState, dispatch] = useReducer(reducer, intial)
-
+    // console.log("token", token)
 
     const addItemHandler = (item) => {
         console.log(cardState.totalAmount)
@@ -33,6 +33,7 @@ const ContextProvider = (props) => {
         dispatch({ type: "remove", id: id })
     }
 
+// ............. Token ................................
     const addTokenHandler = (newToken) => {
         setToken(newToken)
         localStorage.setItem("token", newToken)
