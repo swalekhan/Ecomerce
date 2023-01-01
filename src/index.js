@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import '../node_modules/react-bootstrap/dist/react-bootstrap'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import { BrowserRouter } from 'react-router-dom';
+import ContextProvider from './Store/ContextProvider'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- <BrowserRouter><React.StrictMode>
+  <ContextProvider>
+ <BrowserRouter>
     <App />
-  </React.StrictMode>
-  </BrowserRouter> 
+  </BrowserRouter>
+  </ContextProvider> 
 );
 
 // If you want to start measuring performance in your app, pass a function

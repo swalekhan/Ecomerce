@@ -5,7 +5,7 @@ import Header from './component/Header/Header';
 import MainCard from './component/Card/MainCard';
 import { useContext, useState } from 'react';
 import MainNavbar from './component/Header/MainNavbar';
-import ContextProvider from './Store/ContextProvider';
+// import ContextProvider from './Store/ContextProvider';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './Home/Home';
 import About from './About/About';
@@ -36,15 +36,16 @@ function App() {
       setTimeout(() => { setAlert(false) }, 1000)
    }
 
-   let isLogin = !abc.token
-   // console.log("carddata",cardData)
+   let isLogin = !!abc.token
+   console.log("carddata", abc.isTokenTrue)
+
    return (
-      <ContextProvider>
+      <>
          <MainNavbar onShow={showHandler} />
          {alert && < MainAlert />}
          <Header />
          <Switch>
-            <Route path='/' exact>   
+            <Route path='/' exact >
                <Redirect to='/Login' />
             </Route>
 
@@ -54,9 +55,10 @@ function App() {
 
             {isLogin && (
                <Route path="/Product" exact>
-                  {state && <MainCard show={state} onHide={closeHandle}  />}
+                  {state && <MainCard show={state} onHide={closeHandle} />}
                   <Product alertHandler={alertHandler} />
-               </Route>)}
+               </Route>
+            )}
 
             <Route path='/About' exact>
                <About />
@@ -66,7 +68,7 @@ function App() {
                <Contact />
             </Route>
 
-            <Route path='/Login' exact>
+            <Route path='/Login' >
                <Login />
             </Route>
 
@@ -76,7 +78,7 @@ function App() {
          </Switch>
 
          <Footer />
-      </ContextProvider>
+      </>
    );
 }
 

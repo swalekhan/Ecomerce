@@ -48,7 +48,7 @@ const Item = (props) => {
                 </div>
 
                 <div>
-                    <Link to={"/SingleProduct/" + props.title}> <Card.Img src={props.imageUrl} alt="pic" /></Link> {/* Link for dynamic router */}
+                    <Link to={`/SingleProduct/${props.id}/${props.title}`}> <Card.Img src={props.imageUrl} alt="pic" /></Link> {/* Link for dynamic router */}
                     <Card.Text style={{ display: "inline-block", margin: "15px 150px 50px -5px", fontSize: "medium", fontWeight: "bold" }}>${props.price}</Card.Text>
                     <Button onClick={clickHandler}>Add to Crad</Button>
                 </div>

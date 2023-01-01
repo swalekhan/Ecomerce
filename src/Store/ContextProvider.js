@@ -43,18 +43,22 @@ const ContextProvider = (props) => {
     const removeTokenhandler = () => {
         localStorage.removeItem("token")
     }
+
+//   const  isTokenTrue = !!token
+
 // ....................card button ..................
  const cardButtonHandler = (a) =>{
        setCardButton(a)
  }
  
-    console.log("items", cardState)
+    console.log("items", !!token)
 
     const values = {
         cardButton:cardButton,
         cardButtonHandler:cardButtonHandler,
         // .........
         token: token,
+        isTokenTrue:!!token,
         addToken: addTokenHandler,
         removeToken: removeTokenhandler,
         //  .........
