@@ -9,8 +9,8 @@ const intial = {
 
 const reducer = (state, action) => {
     if (action.type === "add") {
-        let updatedItem = state.items.concat(action.item)
-        let updatedTotalAmount =  state.totalAmount + action.item.quantity * action.item.price
+        let updatedItem = action.item
+        let updatedTotalAmount =  action.item.reduce((curValue, value)=>{return curValue+value.price},0)
         return {
             items: updatedItem,
             totalAmount:updatedTotalAmount
@@ -18,14 +18,16 @@ const reducer = (state, action) => {
     }
 }
 
+
+
 const ContextProvider = (props) => {
     const localStorageToken = localStorage.getItem("token")
     const [token, setToken] = useState(localStorageToken)
     const [cardState, dispatch] = useReducer(reducer, intial)
+    const [cardButton, setCardButton] = useState(false)
     // console.log("token", token)
 
     const addItemHandler = (item) => {
-        console.log(cardState.totalAmount)
         dispatch({ type: "add", item: item })
     }
 
@@ -41,8 +43,17 @@ const ContextProvider = (props) => {
     const removeTokenhandler = () => {
         localStorage.removeItem("token")
     }
+// ....................card button ..................
+ const cardButtonHandler = (a) =>{
+       setCardButton(a)
+ }
+ 
+    console.log("items", cardState)
 
     const values = {
+        cardButton:cardButton,
+        cardButtonHandler:cardButtonHandler,
+        // .........
         token: token,
         addToken: addTokenHandler,
         removeToken: removeTokenhandler,

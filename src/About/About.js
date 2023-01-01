@@ -1,6 +1,15 @@
 // import { Navbar } from "react-bootstrap";
+import { useContext, useEffect } from 'react'
+import Context from '../Store/Context'
 import './About.css'
 const About = () =>{
+     const abc = useContext(Context)
+
+    useEffect(()=>{
+        abc.cardButtonHandler(false)
+    },[abc])
+
+
     return (
        <>
             <section>

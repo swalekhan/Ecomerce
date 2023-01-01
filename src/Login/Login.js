@@ -1,13 +1,18 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef,useEffect } from "react";
 import { Form, Card, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import Context from "../Store/Context";
 
 const Login = () => {
+
     const abc = useContext(Context)
     const history = useHistory()
     const emailRef = useRef()
     const passRef = useRef()
+
+    useEffect(()=>{
+        abc.cardButtonHandler(false)
+    },[abc])
 
     const submitHandler = (e) =>{
       e.preventDefault();

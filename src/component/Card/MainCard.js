@@ -5,9 +5,17 @@ import CardItem from './CardItem'
 
 const MainCard = (props) => {
     const abc = useContext(Context)
-  const clickHandler = () =>{
-    alert("thanks for purchesing")
-  }
+
+
+        const clickHandler = () =>{
+            if(abc.items.length === 0){
+                alert("please add item")
+            }else{
+                alert("thanks for purchesing")
+            }
+        
+        }
+
     const style ={
         border:"2px solid  rgb(248, 106, 106)",
         backgroundColor:"rgb(248, 106, 106)",
@@ -26,7 +34,7 @@ const MainCard = (props) => {
             <div>price</div>
             <div>quantity</div>
          </Stack>
-          <ul>{ abc.items.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={e.imageUrl}/>))}</ul>
+          <ul>{ abc.items.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={Math.random()}  id={e._id}/>))}</ul>
           <h3>Total ${abc.totalAmount}</h3>
          </Modal.Body>
          <Modal.Footer>

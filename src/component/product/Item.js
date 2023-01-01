@@ -8,18 +8,19 @@ const Item = (props) => {
     const abc = useContext(Context)
 
     const clickHandler = async () => {
-        abc.addItem({
-            price: props.price,
-            title: props.title,
-            imageUrl: props.imageUrl,
-            quantity: props.quantity
-        })
+        // abc.addItem({
+        //     price: props.price,
+        //     title: props.title,
+        //     imageUrl: props.imageUrl,
+        //     quantity: props.quantity
+        // })
+      
+        props.alert(true)
 
         let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
-        console.log("email", removeDotEmail)
 
         try {
-            const response = await fetch(`https://crudcrud.com/api/6382280ea42b4608a05dd0249faf5f8e/${removeDotEmail}`, {
+            const response = await fetch(`https://crudcrud.com/api/d100ff03ccc741e2bc63066ea49a9a6a/${removeDotEmail}`, {
                 method: "POST",
                 body: JSON.stringify({
                     price: props.price,
@@ -36,9 +37,6 @@ const Item = (props) => {
         } catch (err) {
             alert(err.message)
         }
-
-
-        props.alert(true)
     }
 
 

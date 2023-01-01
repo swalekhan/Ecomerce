@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext,useEffect} from "react";
 import Item from "./Item";
 import {Row} from "react-bootstrap"
+import Context from "../../Store/Context";
 // import Context from "../../Store/Context";
 
 const cartElements = [
@@ -37,6 +38,13 @@ const cartElements = [
     
 
 const Product = (props) => {
+
+    const abc = useContext(Context)
+
+    useEffect(()=>{
+        abc.cardButtonHandler(true)
+    },[abc])
+
     return (
         <>
             <h1 style={{ textAlign: "center", margin: "20px",fontFamily: 'Abril Fatface'}}>MUSIC</h1>

@@ -1,7 +1,13 @@
-import { useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import Context from "../Store/Context";
 
 const Contact = () => {
+      const abc = useContext(Context)
+
+    useEffect(()=>{
+        abc.cardButtonHandler(false)
+    },[abc])
     //  const [alert, setAlert] = useState(false)
 
     const name = useRef()
@@ -16,7 +22,6 @@ const Contact = () => {
             email:email.current.value,
             phone:phone.current.value
         }
-        console.log("in of function before fe")
         try{
        const response = await fetch("https://crudcrud.com/api/fa4a61c142754728abefb68917eeddf2/info",{
         method:"POST",

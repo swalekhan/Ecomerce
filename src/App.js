@@ -29,6 +29,7 @@ function App() {
       setState(false)
    }
 
+
    const alertHandler = (a) => {
       setAlert(a)
       console.log(a)
@@ -36,7 +37,7 @@ function App() {
    }
 
    let isLogin = !abc.token
-   console.log("app",abc.token)
+   // console.log("carddata",cardData)
    return (
       <ContextProvider>
          <MainNavbar onShow={showHandler} />
@@ -53,7 +54,7 @@ function App() {
 
             {isLogin && (
                <Route path="/Product" exact>
-                  {state && <MainCard show={state} onHide={closeHandle} />}
+                  {state && <MainCard show={state} onHide={closeHandle}  />}
                   <Product alertHandler={alertHandler} />
                </Route>)}
 
