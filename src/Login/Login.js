@@ -9,7 +9,8 @@ const Login = () => {
     const history = useHistory()
     const emailRef = useRef()
     const passRef = useRef()
-
+    
+// .........cardButton..........
     useEffect(()=>{
         abc.cardButtonHandler(false)
     },[abc])
@@ -32,6 +33,7 @@ const Login = () => {
         }
       }).then((res)=>{
          if(res.ok){
+            abc.addToken(updatedemail)
          return res.json();
          }else{
             return res.json().then((data)=>{
@@ -41,7 +43,6 @@ const Login = () => {
          }
       }).then((data)=>{
         console.log(data)
-        abc.addToken(updatedemail)
       history.replace('/Product')
       })
 

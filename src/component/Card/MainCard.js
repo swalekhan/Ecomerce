@@ -13,7 +13,6 @@ const MainCard = (props) => {
             }else{
                 alert("thanks for purchesing")
             }
-        
         }
 
     const style ={
@@ -34,7 +33,7 @@ const MainCard = (props) => {
             <div>price</div>
             <div>quantity</div>
          </Stack>
-          <ul>{ abc.items.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={Math.random()}  id={e._id}/>))}</ul>
+          <ul>{ abc.items.map((e)=>(<CardItem item = {e.imageUrl} price={e.price} quantity ={e.quantity} key={Math.random()}  id={e._id} uniqueId = {e.id}/>))}</ul>
           <h3>Total ${abc.totalAmount}</h3>
          </Modal.Body>
          <Modal.Footer>

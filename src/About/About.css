@@ -97,6 +97,7 @@
 .row h4{
     color: rgb(255, 87, 87);
     margin-bottom: 0px;
+
 }
 
 .after-mid .row1 img{
@@ -110,10 +111,10 @@
 
 /* ################ footer ############ */
 .footer{
-    margin-top: 1rem;
+    margin-top: 2rem;
     background-color: rgb(255, 87, 87);
     color: white;
-    padding: 5px;
+    padding: 1rem;
 }
 
 .footer .text{

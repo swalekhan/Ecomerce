@@ -7,20 +7,19 @@ import { NavLink } from 'react-router-dom';
 const MainNavbar = (props) => {
     const abc = useContext(Context)
    
-     
     const getDataBackend = async()=>{
-
+        console.log("card")
+        props.onCardShow(true)
+    
         let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
         try{
-       const response = await fetch(`https://crudcrud.com/api/d100ff03ccc741e2bc63066ea49a9a6a/${removeDotEmail}`)
-            
+       const response = await fetch(`${abc.url}/${removeDotEmail}`)     
        const data = await response.json()
-         abc.addItem(data)
-         props.onShow()
+        data.map((e)=>abc.addItem(e)) 
         }catch (err){
           console.log(err)
         }
-    } 
+    }
 
     const style = {
         margin: "0px 10px",
@@ -40,7 +39,7 @@ const MainNavbar = (props) => {
                         <li><NavLink style={style} to="/Login">Login</NavLink></li>
                     </ul>
                 </Nav>
-               { abc.cardButton &&<Button style={{border:"2px solid white", backgroundColor:"black"}} className='ms-auto' onClick={getDataBackend}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length===0?"...":abc.items.length}</span></Button>}
+               { abc.cardButton &&<Button style={{border:"2px solid white", backgroundColor:"black"}} className='ms-auto' onClick={getDataBackend}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length===0?0:abc.items.length}</span></Button>}
             </Container>
         </Navbar>
     )

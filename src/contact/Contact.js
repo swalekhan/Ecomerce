@@ -5,9 +5,10 @@ import Context from "../Store/Context";
 const Contact = () => {
       const abc = useContext(Context)
 
-    useEffect(()=>{
-        abc.cardButtonHandler(false)
-    },[abc])
+      useEffect(()=>{
+          abc.cardButtonHandler(false)
+      },[abc])
+
     //  const [alert, setAlert] = useState(false)
 
     const name = useRef()
@@ -23,7 +24,7 @@ const Contact = () => {
             phone:phone.current.value
         }
         try{
-       const response = await fetch("https://crudcrud.com/api/fa4a61c142754728abefb68917eeddf2/info",{
+       const response = await fetch(`${abc.url}/info`,{
         method:"POST",
         body:JSON.stringify(info),
         headers:{
@@ -37,6 +38,11 @@ const Contact = () => {
        }catch(err){
            alert(err.message)
         }
+
+        // ........... erease data from input after submiting....
+        name.current.value  = ""
+        email.current.value = ""
+        phone.current.value = ""
      }
       
 

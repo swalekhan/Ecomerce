@@ -22,8 +22,8 @@ function App() {
    const [alert, setAlert] = useState(false)
    const [state, setState] = useState(false)
 
-   const showHandler = () => {
-      setState(true);
+   const showHandler = (a) => {
+      setState(a);
    }
    const closeHandle = () => {
       setState(false)
@@ -32,26 +32,24 @@ function App() {
 
    const alertHandler = (a) => {
       setAlert(a)
-      console.log(a)
       setTimeout(() => { setAlert(false) }, 1000)
    }
 
    let isLogin = !!abc.token
-   console.log("carddata", abc.isTokenTrue)
 
    return (
       <>
-         <MainNavbar onShow={showHandler} />
+         <MainNavbar onCardShow={showHandler} />
          {alert && < MainAlert />}
          <Header />
          <Switch>
-            <Route path='/' exact >
-               <Redirect to='/Login' />
-            </Route>
 
+           { isLogin && (
             <Route path='/Home' exact>
                <Home />
             </Route>
+           )}
+
 
             {isLogin && (
                <Route path="/Product" exact>
@@ -75,8 +73,11 @@ function App() {
             <Route path='/SingleProduct/:id' exact>
                <SingleProduct />
             </Route>
-         </Switch>
 
+            <Route path='/*' exact >
+               <Redirect to='/Login' />
+            </Route>
+         </Switch>
          <Footer />
       </>
    );

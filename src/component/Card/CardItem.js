@@ -7,22 +7,24 @@ import Context from "../../Store/Context";
 
 const CradItem = (props) => {
     const abc = useContext(Context)
+    
 
     const removeHandler = async (e) => {
-        let li = e.target.parentElement;
-        li.remove()
-        console.log("id", props.id)
+        // let li = e.target.parentElement;
+        // li.remove()
+
+         abc.removeItem(props.uniqueId);
 
         let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
         try {
-            const response = await fetch(`https://crudcrud.com/api/d100ff03ccc741e2bc63066ea49a9a6a/${removeDotEmail}/` + props.id, {
+            const response = await fetch(`${abc.url}/${removeDotEmail}/`+props.id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-            const data = response.json;
-            console.log(data)
+            // const data = response.json;
+            console.log(response)
         } catch (err) {
             console.log(err)
         }

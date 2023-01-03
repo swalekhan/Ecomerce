@@ -8,21 +8,33 @@ const Item = (props) => {
     const abc = useContext(Context)
 
     const clickHandler = async () => {
-        // abc.addItem({
-        //     price: props.price,
-        //     title: props.title,
-        //     imageUrl: props.imageUrl,
-        //     quantity: props.quantity
-        // })
-      
-        props.alert(true)
 
+        // ............ already buy.......
+        // const find = abc.items.find((e) => e.id === props.id)
+        // let id = find ? find.id : 5;
+        // if (props.id === id) {
+        //     alert("This item is already added to the cart")
+        //     return null;
+        // }
+        
+
+        abc.addItem({
+            id: props.id,
+            price: props.price,
+            title: props.title,
+            imageUrl: props.imageUrl,
+            quantity: props.quantity
+        })
+
+
+        props.alert(true)
         let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
 
         try {
-            const response = await fetch(`https://crudcrud.com/api/d100ff03ccc741e2bc63066ea49a9a6a/${removeDotEmail}`, {
+            const response = await fetch(`${abc.url}/${removeDotEmail}`, {
                 method: "POST",
                 body: JSON.stringify({
+                    id:props.id,
                     price: props.price,
                     title: props.title,
                     imageUrl: props.imageUrl,
@@ -33,12 +45,11 @@ const Item = (props) => {
                 }
             })
 
-           return response
+            return response
         } catch (err) {
             alert(err.message)
         }
     }
-
 
     return (
         <Col md={{ span: 3, offset: 2 }} className="mt-5">
@@ -48,7 +59,7 @@ const Item = (props) => {
                 </div>
 
                 <div>
-                    <Link to={`/SingleProduct/${props.id}/${props.title}`}> <Card.Img src={props.imageUrl} alt="pic" /></Link> {/* Link for dynamic router */}
+                    <Link to={"/SingleProduct/" + props.id}> <Card.Img src={props.imageUrl} alt="pic" /></Link> {/* Link for dynamic router */}
                     <Card.Text style={{ display: "inline-block", margin: "15px 150px 50px -5px", fontSize: "medium", fontWeight: "bold" }}>${props.price}</Card.Text>
                     <Button onClick={clickHandler}>Add to Crad</Button>
                 </div>
