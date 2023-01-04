@@ -13,7 +13,7 @@ const CradItem = (props) => {
         // let li = e.target.parentElement;
         // li.remove()
 
-         abc.removeItem(props.uniqueId);
+         abc.removeItem(props.uniqueId); // this unique id we assign while post  
 
         let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
         try {

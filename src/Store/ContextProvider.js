@@ -59,8 +59,7 @@ const reducer = (state, action) => {
 
 const ContextProvider = (props) => {
     const localStorageToken = localStorage.getItem("token")
-    const localStorageVlaue = localStorageToken?localStorageToken:"";
-    const [token, setToken] = useState(localStorageVlaue)
+    const [token, setToken] = useState(localStorageToken)
     const [cardState, dispatch] = useReducer(reducer, intial)
     const [cardButton, setCardButton] = useState(false)
     // .........load.............
@@ -87,7 +86,6 @@ const ContextProvider = (props) => {
     }
     
     const removeItemHandler = (id) => {
-        console.log("id", id)
         dispatch({ type: "remove", id: id })
     }
 
@@ -96,7 +94,8 @@ const ContextProvider = (props) => {
         setToken(newToken)
         localStorage.setItem("token", newToken)
     }
-    const removeTokenhandler = () => {
+    const removeTokenhandler = (emptyToken) => {
+        setToken(emptyToken)
         localStorage.removeItem("token")
     }
 

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import Context from '../../Store/Context';
-import { NavLink } from 'react-router-dom';
+import { NavLink, } from 'react-router-dom';
 
 
 const MainNavbar = (props) => {
@@ -21,6 +21,11 @@ const MainNavbar = (props) => {
         }
     }
 
+    const logoutHandler = () => {
+        abc.removeToken("")
+      
+    }
+
     const style = {
         margin: "0px 10px",
         color: "white",
@@ -36,7 +41,7 @@ const MainNavbar = (props) => {
                         <li><NavLink style={style} to="/Product">Store</NavLink></li>
                         <li><NavLink style={style} to="/About">About</NavLink></li>
                         <li><NavLink style={style} to="/Contact">Contact us</NavLink></li>
-                        <li><NavLink style={style} to="/Login">Login</NavLink></li>
+                        <li><NavLink style={style} to="/Login"><button onClick={logoutHandler} style={{backgroundColor:" transparent",color:"white",border:"none"}}>Logout</button></NavLink></li>
                     </ul>
                 </Nav>
                { abc.cardButton &&<Button style={{border:"2px solid white", backgroundColor:"black"}} className='ms-auto' onClick={getDataBackend}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length===0?0:abc.items.length}</span></Button>}
