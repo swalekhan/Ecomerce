@@ -17,7 +17,7 @@ import MainAlert from './component/Alert/Alert';
 import Context from './Store/Context';
 
 const Home = React.lazy(()=>import('./Home/Home'))
-const SingleProduct = React.lazy(()=>import('./component/product/DynamicPage/SingleProduct'))
+const SingleProduct = React.lazy(()=>import('./component/product/DynamicPage/SingleProduct'))  // this only then load when we need this component;
 
 
 function App() {

@@ -8,14 +8,6 @@ const Item = (props) => {
     const abc = useContext(Context)
 
     const clickHandler = async () => {
-
-        // ............ already buy.......
-        // const find = abc.items.find((e) => e.id === props.id)
-        // let id = find ? find.id : 5;
-        // if (props.id === id) {
-        //     alert("This item is already added to the cart")
-        //     return null;
-        // }
         
 
         abc.addItem({
@@ -28,27 +20,27 @@ const Item = (props) => {
 
 
         props.alert(true)
-        let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
+        // let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
 
-        try {
-            const response = await fetch(`${abc.url}/${removeDotEmail}`, {
-                method: "POST",
-                body: JSON.stringify({
-                    id:props.id,
-                    price: props.price,
-                    title: props.title,
-                    imageUrl: props.imageUrl,
-                    quantity: props.quantity
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+        // try {
+        //     const response = await fetch(`${abc.url}/${removeDotEmail}`, {
+        //         method: "POST",
+        //         body: JSON.stringify({
+        //             id:props.id,
+        //             price: props.price,
+        //             title: props.title,
+        //             imageUrl: props.imageUrl,
+        //             quantity: props.quantity
+        //         }),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     })
 
-            return response
-        } catch (err) {
-            alert(err.message)
-        }
+        //     return response
+        // } catch (err) {
+        //     alert(err.message)
+        // }
     }
 
     return (

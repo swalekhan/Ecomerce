@@ -10,25 +10,19 @@ const CradItem = (props) => {
     
 
     const removeHandler = async (e) => {
-        // let li = e.target.parentElement;
-        // li.remove()
 
          abc.removeItem(props.uniqueId); // this unique id we assign while post  
-
-        let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
-        try {
-            const response = await fetch(`${abc.url}/${removeDotEmail}/`+props.id, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            // const data = response.json;
-            console.log(response)
-        } catch (err) {
-            console.log(err)
-        }
     }
+
+   const addProducHandler = () =>{
+    abc.addItem({
+        id: props.uniqueId,
+        price: props.price,
+        title: props.title,
+        imageUrl: props.imageUrl,
+        quantity: 1,
+    })
+   }
 
     const style ={
         border:"2px solid  rgb(248, 106, 106)",
@@ -44,7 +38,8 @@ const CradItem = (props) => {
                     <div><img width="80px" src={props.item} alt="pic" /></div>
                     <div>{props.price}</div>
                     <div>{props.quantity}</div>
-                    <Button style={style} onClick={removeHandler}>remove</Button>
+                    <Button style={style} onClick={removeHandler}>-</Button>
+                    <Button style={style} onClick={addProducHandler}>+</Button>
                 </Stack>
                 <hr />
             </li>

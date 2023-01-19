@@ -8,9 +8,16 @@ const intial = {
 }
 
 const reducer = (state, action) => {
+
+    if(action.type === "replace"){
+        console.log(action.data.cardState.items)
+        return{
+            items:action.data.cardState.items?action.data.cardState.items:[],
+            totalAmount:action.data.cardState.totalAmount?action.data.cardState.totalAmount:0,
+        }
+
+    }
     if (action.type === "add") {
-
-
         let updatedTotalAmount = state.totalAmount + action.item.price* action.item.quantity;
 
         let existItemIndex  = state.items.findIndex((e)=>e.id === action.item.id);
@@ -56,22 +63,30 @@ const reducer = (state, action) => {
 }
 
 
-
+let putRequestItialValue = true;
 const ContextProvider = (props) => {
     const localStorageToken = localStorage.getItem("token")
     const [token, setToken] = useState(localStorageToken)
     const [cardState, dispatch] = useReducer(reducer, intial)
     const [cardButton, setCardButton] = useState(false)
     // .........load.............
+
+
+    // console.log(cardState)
+   
+
+
     useEffect(() => {
         async function windowLoad() {
-            let removeDotEmail = token.replace(/[^a-z0-9]/gi)
+            // let removeDotEmail = token.replace(/[^a-z0-9]/gi)
             try {
-                const response = await fetch(`https://crudcrud.com/api/247935e032764b86896985a666fff818/${removeDotEmail}`)
+                const response = await fetch(`https://ecommerce-74080-default-rtdb.firebaseio.com/khan.json`)
 
                 const data = await response.json()
                 // addItemHandler(data)
-               data.map((e)=>addItemHandler(e)) 
+                //  replaceHandler(data)
+                dispatch({type:"replace",data:data})
+                 console.log("fetch",data)
             } catch (err) {
                 console.log(err)
             }
@@ -79,12 +94,33 @@ const ContextProvider = (props) => {
         windowLoad()
     }, [token])
    
-
+    useEffect(()=>{
+        const putRequest = async() =>{
+           const putRes = await fetch( "https://ecommerce-74080-default-rtdb.firebaseio.com/khan.json",{
+               method:"PUT",
+               body:JSON.stringify({cardState,}),
+               // headers:{
+               //     "Content-Type":"application/json"
+               // }
+           })
+           const data = await putRes.json()
+           console.log("put",data)
+        }  
+        if(putRequestItialValue){
+           putRequestItialValue = false;
+           return;
+        }
+        putRequest();
+      },[cardState])
+   
 
     const addItemHandler = (item) => {
         dispatch({ type: "add", item: item })
     }
     
+    // const replaceHandler = (data) =>{
+    //     dispatch({type:"replace",data:data})
+    // }
     const removeItemHandler = (id) => {
         dispatch({ type: "remove", id: id })
     }

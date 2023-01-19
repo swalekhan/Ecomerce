@@ -8,7 +8,7 @@ const MainNavbar = (props) => {
     const abc = useContext(Context)
    
     const getDataBackend = async()=>{
-        console.log("card")
+
         props.onCardShow(true)
     
         let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
