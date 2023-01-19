@@ -9,8 +9,7 @@ const intial = {
 
 const reducer = (state, action) => {
 
-    if(action.type === "replace"){
-        console.log(action.data.cardState.items)
+    if(action.type === "replace"){ // fetching data is this
         return{
             items:action.data.cardState.items?action.data.cardState.items:[],
             totalAmount:action.data.cardState.totalAmount?action.data.cardState.totalAmount:0,
@@ -83,8 +82,6 @@ const ContextProvider = (props) => {
                 const response = await fetch(`https://ecommerce-74080-default-rtdb.firebaseio.com/khan.json`)
 
                 const data = await response.json()
-                // addItemHandler(data)
-                //  replaceHandler(data)
                 dispatch({type:"replace",data:data})
                  console.log("fetch",data)
             } catch (err) {
@@ -93,15 +90,14 @@ const ContextProvider = (props) => {
         }     
         windowLoad()
     }, [token])
+
+    // ............put request.............
    
     useEffect(()=>{
         const putRequest = async() =>{
            const putRes = await fetch( "https://ecommerce-74080-default-rtdb.firebaseio.com/khan.json",{
                method:"PUT",
                body:JSON.stringify({cardState,}),
-               // headers:{
-               //     "Content-Type":"application/json"
-               // }
            })
            const data = await putRes.json()
            console.log("put",data)
@@ -118,9 +114,6 @@ const ContextProvider = (props) => {
         dispatch({ type: "add", item: item })
     }
     
-    // const replaceHandler = (data) =>{
-    //     dispatch({type:"replace",data:data})
-    // }
     const removeItemHandler = (id) => {
         dispatch({ type: "remove", id: id })
     }
@@ -143,7 +136,7 @@ const ContextProvider = (props) => {
 
 
     const values = {
-        url:"https://crudcrud.com/api/247935e032764b86896985a666fff818",
+        // url:"https://crudcrud.com/api/247935e032764b86896985a666fff818",
         // .........
         cardButton: cardButton,
         cardButtonHandler: cardButtonHandler,

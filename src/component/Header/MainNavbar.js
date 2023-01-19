@@ -7,18 +7,8 @@ import { NavLink, } from 'react-router-dom';
 const MainNavbar = (props) => {
     const abc = useContext(Context)
    
-    const getDataBackend = async()=>{
-
+    const getDataBackend = async()=>{ // card handler
         props.onCardShow(true)
-    
-        let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
-        try{
-       const response = await fetch(`${abc.url}/${removeDotEmail}`)     
-       const data = await response.json()
-        data.map((e)=>abc.addItem(e)) 
-        }catch (err){
-          console.log(err)
-        }
     }
 
     const logoutHandler = () => {
