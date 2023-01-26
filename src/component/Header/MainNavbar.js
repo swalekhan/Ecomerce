@@ -7,12 +7,12 @@ import { NavLink, } from 'react-router-dom';
 const MainNavbar = (props) => {
     const abc = useContext(Context)
    
-    const getDataBackend = async()=>{ // card handler
+    const showCard = async()=>{ // card handler
         props.onCardShow(true)
     }
 
     const logoutHandler = () => {
-        abc.removeToken("")
+        abc.removeToken(null)
       
     }
 
@@ -34,7 +34,7 @@ const MainNavbar = (props) => {
                         <li><NavLink style={style} to="/Login"><button onClick={logoutHandler} style={{backgroundColor:" transparent",color:"white",border:"none"}}>Logout</button></NavLink></li>
                     </ul>
                 </Nav>
-               { abc.cardButton &&<Button style={{border:"2px solid white", backgroundColor:"black"}} className='ms-auto' onClick={getDataBackend}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items.length===0?0:abc.items.length}</span></Button>}
+               { abc.cardButton &&<Button style={{border:"2px solid white", backgroundColor:"black"}} className='ms-auto' onClick={showCard}>Card<span style={{ color: "red", marginLeft: "5px" }}>{abc.items?abc.items.length:0}</span></Button>}
             </Container>
         </Navbar>
     )

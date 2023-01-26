@@ -5,12 +5,9 @@ import Header from './component/Header/Header';
 import MainCard from './component/Card/MainCard';
 import React, { Suspense, useContext, useState } from 'react';
 import MainNavbar from './component/Header/MainNavbar';
-// import ContextProvider from './Store/ContextProvider';
 import { Route, Switch, Redirect } from 'react-router-dom'
-// import Home from './Home/Home';
 import About from './About/About';
 import Contact from './contact/Contact';
-// import SingleProduct from './component/product/DynamicPage/SingleProduct';
 import Login from './Login/Login';
 import Footer from './component/Footer/Footer';
 import MainAlert from './component/Alert/Alert';
@@ -32,13 +29,12 @@ function App() {
       setState(false)
    }
 
-
    const alertHandler = (a) => {
       setAlert(a)
       setTimeout(() => { setAlert(false) }, 1000)
    }
 
-   let isLogin = !!abc.token
+   let isLogin = abc.isTokenTrue
 
    return (
       <>

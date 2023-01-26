@@ -33,16 +33,17 @@ const Login = () => {
         }
       }).then((res)=>{
          if(res.ok){
-            abc.addToken(updatedemail)
+            const email = updatedemail.replace(/[^0-9a-z]/gi, "") 
+            abc.addToken(email)
          return res.json();
          }else{
             return res.json().then((data)=>{
-                console.log(data)
+                // console.log(data)
                 alert(data.error.message)
             })
          }
       }).then((data)=>{
-        console.log(data)
+        // console.log(data)
       history.replace('/Product')
       })
 

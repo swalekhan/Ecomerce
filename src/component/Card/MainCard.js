@@ -7,7 +7,7 @@ const MainCard = (props) => {
     const abc = useContext(Context)
 
 
-        const clickHandler = () =>{
+        const ParchesHandler = () =>{
             if(abc.items.length === 0){
                 alert("please add item")
             }else{
@@ -37,7 +37,7 @@ const MainCard = (props) => {
           <h3>Total ${abc.totalAmount}</h3>
          </Modal.Body>
          <Modal.Footer>
-         <Button style={style} onClick={clickHandler} >Purchase</Button>
+         <Button style={style} onClick={ParchesHandler} >Purchase</Button>
          </Modal.Footer>
          </Modal>
         </>
