@@ -1,14 +1,14 @@
-import React, {  useContext, useEffect, } from "react";
+// import React, {  useContext, } from "react";
 import { Button, Table } from "react-bootstrap";
-import Context from "../Store/Context";
+// import Context from "../Store/Context";
 
 
 const Home = () => {
-  const abc = useContext(Context);
+  // const abc = useContext(Context);
 
-  useEffect(()=>{
-   abc.cardButtonHandler(false)
-  },[abc])
+  // useEffect(()=>{
+  //  abc.cardButtonHandler(false)
+  // },[abc])
   
 
 return (

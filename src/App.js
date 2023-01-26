@@ -39,6 +39,7 @@ function App() {
    return (
       <>
          <MainNavbar onCardShow={showHandler} />
+         {state && <MainCard show={state} onHide={closeHandle} />}
          {alert && < MainAlert />}
          <Header />
          <Suspense fallback={<p>Loading...</p>}>    {/*suspense use with react.lazy it handle timing ; */}
@@ -51,7 +52,6 @@ function App() {
 
             {isLogin && (
                <Route path="/Product" exact>
-                  {state && <MainCard show={state} onHide={closeHandle} />}
                   <Product alertHandler={alertHandler} />
                </Route>
             )}

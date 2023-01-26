@@ -20,27 +20,6 @@ const Item = (props) => {
 
 
         props.alert(true)
-        // let removeDotEmail = abc.token.replace(/[^a-z0-9]/gi)
-
-        // try {
-        //     const response = await fetch(`${abc.url}/${removeDotEmail}`, {
-        //         method: "POST",
-        //         body: JSON.stringify({
-        //             id:props.id,
-        //             price: props.price,
-        //             title: props.title,
-        //             imageUrl: props.imageUrl,
-        //             quantity: props.quantity
-        //         }),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-
-        //     return response
-        // } catch (err) {
-        //     alert(err.message)
-        // }
     }
 
     return (

@@ -10,10 +10,10 @@ const reducer = (state, action) => {
 
     }
     if (action.type === "add") {
-        let updatedTotalAmount = state.totalAmount + action.item.price* action.item.quantity;
 
         let existItemIndex  = state.items.findIndex((e)=>e.id === action.item.id);
         let existItem = state.items[existItemIndex];
+        let updatedTotalAmount = state.totalAmount + action.item.price;
         let updatedItems;
         if(existItem){
         let updatedItem = {
@@ -52,6 +52,7 @@ const reducer = (state, action) => {
 
       }
     }
+    return state;
 }
 
 export default reducer;

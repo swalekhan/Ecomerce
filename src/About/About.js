@@ -1,15 +1,7 @@
-// import { Navbar } from "react-bootstrap";
-import { useContext, useEffect } from 'react'
+
 import { Link } from 'react-router-dom'
-import Context from '../Store/Context'
 import './About.css'
 const About = () => {
-    const abc = useContext(Context)
-
-    useEffect(() => {
-        abc.cardButtonHandler(false)
-    }, [abc])
-
 
     return (
         <>
@@ -62,7 +54,6 @@ const About = () => {
                     </div>
                 </div>
             </section>
-            {/* <Navbar bg="dark" expand="lg" variant='dark' className="p-5" > <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand></Navbar> */}
         </>
     )
 }

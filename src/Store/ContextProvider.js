@@ -8,12 +8,11 @@ const intial = {
     totalAmount: 0,
 }
 
-let putRequestItialValue = true;
+let putRequestItialValue = true; // prevent very first rendring...
 const ContextProvider = (props) => {
     const localStorageToken = localStorage.getItem("token")
     const [token, setToken] = useState(localStorageToken)
     const [cardState, dispatch] = useReducer(reducer, intial)
-    const [cardButton, setCardButton] = useState(false)
    
     const addItemHandler = (item) => {
         dispatch({ type: "add", item: item })
@@ -26,8 +25,6 @@ const ContextProvider = (props) => {
     // ............. Token ................................
     const addTokenHandler = (email) => { // token is a email.
         setToken(email)
-       
-        console.log(email)  // remove @ and . from email 
         localStorage.setItem("token", email)
     }
     const removeTokenhandler = (emptyToken) => {
@@ -35,16 +32,10 @@ const ContextProvider = (props) => {
         localStorage.removeItem("token")
     }
 
-    
-    // ....................card button ..................
-    const cardButtonHandler = (a) => {
-        setCardButton(a)
-    }
-
 
 // .........fetch data on load......;
     useEffect(() => {   
-        fetchData(token, dispatch)
+        fetchData(token, dispatch) 
     }, [token])
 
 // .............putdata.........;
@@ -58,11 +49,6 @@ useEffect(()=>{
 
 
     const values = {
-        // url:"https://ecommerce-74080-default-rtdb.firebaseio.com/.json",
-        // .........
-        cardButton: cardButton,
-        cardButtonHandler: cardButtonHandler,
-        // .........
         token: token,
         isTokenTrue: !!token,
         addToken: addTokenHandler,

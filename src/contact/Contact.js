@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import Context from "../Store/Context";
 
@@ -7,10 +7,6 @@ const Contact = () => {
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
       const abc = useContext(Context)
-
-      useEffect(()=>{
-          abc.cardButtonHandler(false)
-      },[abc])
 
 
      const submitHandler = async(e) =>{
@@ -30,7 +26,7 @@ const Contact = () => {
          
        const data = await response.json()
          console.log(data)
-        //  alert("thanks! we will contact you soon.")
+         alert("thanks! we will contact you soon.")
        }catch(err){
            alert(err.message)
            console.log(err)

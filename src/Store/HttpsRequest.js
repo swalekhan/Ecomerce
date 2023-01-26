@@ -15,9 +15,10 @@ export const putRequest = async(cardState, token) =>{
 
         const data = await response.json()
         dispatch({type:"replace",data:data})
-         console.log("fetch",data)
+        //  console.log("fetch",data)
     } catch (err) {
-        console.log(err)
+        // console.log(err)
+        alert(err.message)
     }
 }     
  
